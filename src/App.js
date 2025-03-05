@@ -1,10 +1,8 @@
 import { useState } from "react";
 
-const messages = [
-  "Learn React ⚛️",
-  "Apply for jobs 💼",
-  "Invest your new income 🤑",
-];
+import Steps from './components/Steps.jsx';
+import Message from './components/Message.jsx';
+import Buttons from './components/Buttons.jsx';
 
 function App() {
   const [step, setStep] = useState(1);
@@ -27,28 +25,9 @@ function App() {
       <button className="close" onClick={() => setIsOpen((open) => !open)}>x</button>
       {isOpen && (
         <div className="steps">
-          <div className="numbers">
-            <div className={step >= 1 ? 'active' : ''}>
-              <span>1</span>
-            </div>
-            <div className={step >= 2 ? 'active' : ''}>
-              <span>2</span>
-            </div>
-            <div className={step >= 3 ? 'active' : ''}>
-              <span>3</span>
-            </div>
-          </div>
-          <div className="message">
-            <span>Step {step}: {messages[step - 1]}</span>
-          </div>
-          <div className="buttons">
-            <button onClick={handlePrevStepChange}>
-              <span>Previous</span>
-            </button>
-            <button onClick={handleNextStepChange}>
-              <span>Next</span>
-            </button>
-          </div>
+          <Steps step={step}/>
+          <Message step={step}/>
+          <Buttons step={step} handlePrevious={handlePrevStepChange} handleNext={handleNextStepChange} />
         </div>
       )}
     </>
