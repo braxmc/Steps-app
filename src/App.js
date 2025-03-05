@@ -12,19 +12,19 @@ function App() {
 
   function handleNextStepChange() {
     if (step < 3) {
-      setStep(step + 1);
+      setStep((stp) => stp + 1);
     }
   }
 
   function handlePrevStepChange() {
     if (step > 1) {
-      setStep(step - 1);
+      setStep((stp) => stp - 1);
     }
   }
 
   return (
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>x</button>
+      <button className="close" onClick={() => setIsOpen((open) => !open)}>x</button>
       {isOpen && (
         <div className="steps">
           <div className="numbers">
@@ -42,8 +42,8 @@ function App() {
             <span>Step {step}: {messages[step - 1]}</span>
           </div>
           <div className="buttons">
-            <button>
-              <span onClick={handlePrevStepChange}>Previous</span>
+            <button onClick={handlePrevStepChange}>
+              <span>Previous</span>
             </button>
             <button onClick={handleNextStepChange}>
               <span>Next</span>
